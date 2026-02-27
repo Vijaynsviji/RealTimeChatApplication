@@ -5,8 +5,11 @@
 
   /* Primary color */
   --primary-color-800: rgb(10, 10, 10);
+  --primary-color-600: #00c950;
+  --seconday-color-500: #737373;
 
   /* neutral colors */
+  --neutral-color-800: #b6b6b6;
   --neutral-color-600: #e5e5e5;
   --neutral-color-400: #f5f5f5;
   --neutral-color-300: #f9f9f9;
@@ -14,6 +17,7 @@
   /* light colors */
 
   --light-color-100: #ffffff;
+  --light-color-200: #fafafa;
 
 
 
@@ -26,6 +30,10 @@
   --input-bg: var(--light-color-100);
 
   --primary-text: var(--primary-color-800);
+  --primary-text-600: (--primary-color-600);
+  --secondary-text: var(--seconday-color-500);
+  --light-text: var(--light-color-200);
+  --neutral-text: var(--neutral-color-800);
 
 
 
@@ -33,6 +41,7 @@
 
 *{
  font-family: "Inter", sans-serif;
+ box-sizing: border-box;
 }
 
 

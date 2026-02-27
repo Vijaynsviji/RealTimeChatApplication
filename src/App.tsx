@@ -4,6 +4,7 @@ import './App.css'
 import Home from './components/home/home';
 import SignIn from './components/auth/signin';
 import SignUp from './components/auth/signup';
+import ProfileComp from './components/home/sidebar/profile/profile';
 
 function App() {
 
@@ -21,6 +22,10 @@ function App() {
     {
     path: "/signup",
     element: <SignUp/>
+  },
+  {
+    path: '/profile',
+    element: <ProfileComp />
   }
   ]);
 

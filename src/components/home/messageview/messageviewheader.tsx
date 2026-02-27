@@ -15,7 +15,7 @@ function MessageViewHeader() {
             <AvatarComp size={{ width: 56, height: 56 }} />
             <div>
                 <p className='text-2xl font-bold'>Vijay N S</p>
-                <p className='text-1xl text-green-800'>Active Now</p>
+                <p className='text-1xl text-green-800 text-[var(--primary-text-600)]'>Active Now</p>
             </div>
 
         </div>
