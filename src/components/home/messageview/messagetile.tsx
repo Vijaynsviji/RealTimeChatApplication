@@ -8,7 +8,6 @@ import DoneAllIcon from '@mui/icons-material/DoneAll';
 import DoneIcon from '@mui/icons-material/Done';
 import moment from 'moment';
 
-
 interface MessageTile{
   name: string,
   messageText: string,
@@ -16,7 +15,7 @@ interface MessageTile{
   status: Status
 }
 
-function MessageTile({name,messageText,date}:MessageTile) {
+function MessageTile({name,messageText,date,status}:MessageTile) {
   const formatedDate = moment(date).format("MMM D, HH:mm");
   const isYourMessage = name == "You";
 
@@ -30,6 +29,17 @@ function MessageTile({name,messageText,date}:MessageTile) {
 
 
 
+  const showDoneMarkBasedOnStatus = (status:Status)=>{
+    switch(status){
+      case 'sent': return <DoneIcon sx={{color:"var(--neutral-text)"}} />
+      case "delivered": return <DoneAllIcon sx={{color:"var(--neutral-text)"}}/>
+      case "read": return <DoneAllIcon sx={{color:"#53bdeb"}}/>
+      default: return <DoneIcon sx={{color:"var(--neutral-text)"}} />
+    }
+  }
+
+
+
   return (
     <div id="outerDiv" className={outerDivClassName + ' p-[10px]'}>
       <div id="messageContainer" className={'max-w-[75%] w-[100%] flex gap-[10px] ' + messageContainerClassName}>
@@ -40,7 +50,7 @@ function MessageTile({name,messageText,date}:MessageTile) {
               <p className={textColorClassName + ' text-[1.125rem]'}>{messageText}</p>
               <div className='flex justify-between'>
                 <p className={"text-[var(--neutral-text)]"}>{formatedDate}</p>
-                {isYourMessage && <DoneAllIcon sx={{color:"var(--neutral-text)"}}/>}
+                {isYourMessage && showDoneMarkBasedOnStatus(status)}
               </div>
             </div>
           </div>

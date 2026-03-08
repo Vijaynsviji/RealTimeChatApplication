@@ -23,6 +23,8 @@ function SideBarHeader() {
     setAnchorEl(null);
   };
   const handleLogOutClick = ()=>{
+    navigate("/signin");
+    setAnchorEl(null);
 
   }
   return (
@@ -36,7 +38,7 @@ function SideBarHeader() {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleMenuItemClick}
+        onClose={()=>{setAnchorEl(null)}}
         slotProps={{
           list: {
             'aria-labelledby': 'basic-button',

@@ -1,3 +1,4 @@
+import type { handleChangeType } from "../../auth/authbase";
 
 
 
@@ -6,12 +7,15 @@ export interface InputCompProps{
     inputType: React.HTMLInputTypeAttribute | undefined,
     placeHolder?: string
     hideLable?:boolean,
-    labelSize?: string
+    labelSize?: string,
+    handleChange: (value:string,  type: handleChangeType)=>void
+    type:handleChangeType,
+    value: string,
 }
 
 
 
-export default function InputComp({label,inputType,placeHolder,hideLable=true,labelSize}:InputCompProps) {
+export default function InputComp({label,inputType,placeHolder,hideLable=true,labelSize,handleChange,type,value}:InputCompProps) {
     let classNames = "flex flex-col align-center";
     if(!hideLable){
         classNames = "flex flex-col gap-[10px] align-center";
@@ -19,7 +23,7 @@ export default function InputComp({label,inputType,placeHolder,hideLable=true,la
     return (
         <div className={classNames}>
             {!hideLable && <p className={`text-${labelSize || '3xl'} text-[var(--primary-text)]  `}>{label}</p>}
-            <input placeholder={placeHolder ?? ""} className="bg-[var(--input-bg)] text-xl border border-[var(--input-border)] text-[var(--primary-text)] p-[10px] border-solid rounded-[10px] h-[60px]" type={inputType} />
+            <input value={value} onChange={(e)=>handleChange(e.target.value,type)} placeholder={placeHolder ?? ""} className="bg-[var(--input-bg)] text-xl border border-[var(--input-border)] text-[var(--primary-text)] p-[10px] border-solid rounded-[10px] h-[60px]" type={inputType} />
         </div>
     );
 }

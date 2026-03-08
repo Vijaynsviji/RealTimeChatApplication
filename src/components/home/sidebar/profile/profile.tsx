@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from 'react-router-dom';
 import { IconButton } from '@mui/material';
+import ButtonComp from '../../../UI/ButtonComp/ButtonComp';
 
 function ProfileComp() {
     const navigate = useNavigate();
@@ -29,16 +30,19 @@ function ProfileComp() {
                         <div className='flex flex-col'>
                             <p>Name</p>
                             <TextField
-                            slotProps={
+                            // slotProps={
                                 
-                            }
-                             disabled={true} 
+                            // }
                              id="standard-basic"  
                              variant="standard" />
                         </div>
                         <div className='flex flex-col'>
                             <p>Email</p>
                             <TextField id="standard-basic"  variant="standard" />
+                        </div>
+
+                        <div>
+                            <ButtonComp fontSize='1xl' name="Save" />
                         </div>
                     </div>
             </div>
