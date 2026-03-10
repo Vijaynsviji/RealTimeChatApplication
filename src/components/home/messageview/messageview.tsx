@@ -5,22 +5,20 @@ import MessageInput from './messageinput';
 import type { Message } from '../../../utils/types/Types';
 import { messageData } from './messagedata';
 
-function MessageView() {
-  const [messages,setMessages] = React.useState<Message[]>([]);
+
+interface MessageView{
+  messages: Message[]
+}
 
 
-  React.useEffect(()=>{
-    setMessages(messageData)
-  },[])
+
+function MessageView({messages}:MessageView) {
+
 
 
 
   const sendMessage = (newMessage:Message)=>{
-    try{
-      setMessages(prev=>[...prev,newMessage]);
-    }catch(e){
-      console.error("Error in sendMessage");
-    }
+    
   }
 
 

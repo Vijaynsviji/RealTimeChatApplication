@@ -10,8 +10,15 @@ import MenuItem from '@mui/material/MenuItem';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
+import AddCommentIcon from '@mui/icons-material/AddComment';
+import type { ContactCardProp } from './contactlist';
 
-function SideBarHeader() {
+interface SideBarHeader{
+  showSearchContact: boolean,
+  handleCloseNewContact: ()=>void
+}
+
+function SideBarHeader({showSearchContact,handleCloseNewContact}:SideBarHeader) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
@@ -29,12 +36,21 @@ function SideBarHeader() {
   }
   return (
     <div className=' border-b-[2px] border-[var(--border)] flex justify-between items-center h-25 p-[20px]'>
-      <h2 className='text-3xl font-bold'>Message</h2>
-      <IconButton onClick={handleClick} aria-label="more">
-        <MoreVertIcon />
+      <h2 className='text-3xl font-bold'>{!showSearchContact ? "Message": "New Contact" }</h2>
+
+      <div className='flex gap-[10px] items-center'>
+        <IconButton onClick={handleCloseNewContact}>
+      <AddCommentIcon   />
       </IconButton>
 
-      <Menu
+       <IconButton onClick={handleClick} aria-label="more">
+        <MoreVertIcon />
+      </IconButton>
+      </div>
+
+
+
+       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
@@ -58,6 +74,8 @@ function SideBarHeader() {
           </div>
         </MenuItem>
       </Menu>
+
+     
     </div>
   )
 }

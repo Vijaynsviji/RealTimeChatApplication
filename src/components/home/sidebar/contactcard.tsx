@@ -1,22 +1,17 @@
 import React from 'react'
 import AvatarComp from '../../UI/Avatar/Avatar';
 import moment from 'moment';
+import type { ContactCardProp } from './contactlist';
 
 
-interface ContactCard{
-    id: number,
+interface ContactCard extends ContactCardProp{
     isSelected: Boolean,
-    Name: string,
-    lastMessage: string,
-    lastMessageDate: Date | string,
-    unReadMessageCount: string | number,
-    isOnline: Boolean,
-    onClickContact: (id:number)=>void
+    onClickContact: (id:number | string | number)=>void
 }
 
 function ContactCard({isSelected,lastMessage,lastMessageDate,unReadMessageCount,Name,isOnline=false,id,onClickContact}:ContactCard) {
     const date = new Date();
-    const formattedDate = moment(lastMessageDate).format('MM/DD/YY'); 
+    const formattedDate = lastMessageDate? moment(lastMessageDate).format('MM/DD/YY'): ""; 
     const numberOfUnReadMessage = typeof unReadMessageCount === "number" ? unReadMessageCount.toString() : unReadMessageCount;
     const showNumberOfUnReadMessage = typeof unReadMessageCount == 'string' ? Number(unReadMessageCount)>0: unReadMessageCount>0;
     const cardClassName = 'flex justify-between rounded-[15px] items-center px-[20px] py-[15px] m-[10px]' + (isSelected? " bg-[var(--bg-page)]" : "");
@@ -31,8 +26,8 @@ function ContactCard({isSelected,lastMessage,lastMessageDate,unReadMessageCount,
             </div>
         </div>
         <div className='flex flex-col items-end gap-[10px]'>
-            <p className='text-[var(--secondary-text)]'>{formattedDate}</p>
-            {showNumberOfUnReadMessage && <p className='p-[5px] px-[15px] rounded-[10px] bg-[var(--bg-primary-button)] text-[var(--primary-button-text)]'>{numberOfUnReadMessage}</p>}
+            <p className='text-[var(--secondary-text)]'>{formattedDate || ""}</p>
+            {showNumberOfUnReadMessage && <p className='p-[5px] px-[15px] rounded-[10px] bg-[var(--bg-primary-button)] text-[var(--primary-button-text)]'>{numberOfUnReadMessage || ""}</p>}
         </div>
     </div>
   )

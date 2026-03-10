@@ -8,8 +8,8 @@ export interface InputCompProps{
     placeHolder?: string
     hideLable?:boolean,
     labelSize?: string,
-    handleChange: (value:string,  type: handleChangeType)=>void
-    type:handleChangeType,
+    handleChange: (value:string,  type?: handleChangeType)=>void
+    type?:handleChangeType,
     value: string,
 }
 
